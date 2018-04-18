@@ -2,7 +2,7 @@
     $host_db="localhost";
     $usuario_db="root";
     //Contrasenia Karin
-    $pass_db="Bankai123";
+    $pass_db="root";
     //Contrasenia Diego
     //$pass_db="root";
     $db="saw";
@@ -18,7 +18,7 @@
         $contrasenia = $_POST['pass'];      
         
         
-        $consultaSQL= "SELECT * FROM `delivery_man` WHERE `name` ='".$nombre."' AND `password` = '".$contrasenia."';";
+        $consultaSQL= "SELECT * FROM `administrator` WHERE `name` ='".$nombre."' AND `password` = '".$contrasenia."';";
         $resultados=mysqli_query($conexion, $consultaSQL);
         $row = mysqli_fetch_array($resultados);
         if($row['name'] == $nombre){
@@ -55,7 +55,7 @@
                     <div class="card">
                         <div class="card text-center">
                             <div class="card-header" style="background:#2E4052">
-                                <h2 style="color:#FFFFFF">Login <span>Repartidores</span></h2>
+                                <h2 style="color:#FFFFFF">Login <span>Administrador</span></h2>
                             </div>
                         </div>
                         <div class="card-body" style="background:#FFC857">
