@@ -1,15 +1,5 @@
-<?php
-  
-    $host_db="localhost";
-    $usuario_db="root";
-    $pass_db="root";
-    $db="saw";
-  
-    $conexion=new mysqli($host_db,$usuario_db, $pass_db);
-    $conexion->set_charset("utf8");    
-  
-    mysqli_select_db($conexion, "saw");    
-
+<?php  
+    include('../../conexion.php');
     if (@$_POST['nombre']) {
       
       $nombre = $_POST['nombre'];
@@ -89,7 +79,7 @@
 
             <ul class="nav navbar-top-links navbar-right">                
                 <!-- /.dropdown -->
-                <li><?php echo $nombre; ?></li>
+                <li><?php //echo $nombre; ?></li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>

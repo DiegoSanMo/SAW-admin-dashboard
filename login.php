@@ -1,27 +1,16 @@
 <?php
-    $host_db="localhost";
-    $usuario_db="root";
-    //Contrasenia Karin
-    $pass_db="root";
-    //Contrasenia Diego
-    //$pass_db="root";
-    $db="saw";
-
-    $conexion=new mysqli($host_db,$usuario_db, $pass_db);
-    $conexion->set_charset("utf8");    
-
-    mysqli_select_db($conexion, "saw");
+    include('conexion.php');
     session_start();
     session_destroy(); 
     if(@$_POST['name']){
         $nombre = $_POST['name'];
-        $contrasenia = $_POST['pass'];      
+        $contrasenia = $_POST['pass'];    
         
         
-        $consultaSQL= "SELECT * FROM `administrator` WHERE `name` ='".$nombre."' AND `password` = '".$contrasenia."';";
+        $consultaSQL= "SELECT * FROM `administrator` WHERE `username` ='".$nombre."' AND `password` = '".$contrasenia."';";
         $resultados=mysqli_query($conexion, $consultaSQL);
         $row = mysqli_fetch_array($resultados);
-        if($row['name'] == $nombre){
+        if($row['username'] == $nombre){
           session_start();
           $_SESSION['username']  = $nombre;
           $_SESSION['userId']  = $row['id'];
