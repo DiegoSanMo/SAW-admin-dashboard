@@ -43,10 +43,10 @@ $pdf->SetFont('Arial', 'B', 12);
 $pdf->SetFillColor(100,100,100);
 $pdf->SetTextColor(255, 255, 255);
 $pdf->Cell(18, 8, 'ID', 1, 0, 'C', true);
-$pdf->Cell(55, 8, 'Cliente', 1, 0, 'C', true);
-$pdf->Cell(45, 8, 'Domicilio', 1, 0, 'C', true);
-$pdf->Cell(35, 8, 'Fecha', 1, 0, 'C', true);
-$pdf->Cell(35, 8, 'Total', 1, 0, 'C', true);
+$pdf->Cell(60, 8, 'Cliente', 1, 0, 'C', true);
+$pdf->Cell(55, 8, 'Domicilio', 1, 0, 'C', true);
+$pdf->Cell(25, 8, 'Fecha', 1, 0, 'C', true);
+$pdf->Cell(25, 8, 'Total', 1, 0, 'C', true);
 
 
 $pdf->Ln(8);
@@ -65,10 +65,10 @@ foreach ($conexion->query('SELECT * from `delivery_order` WHERE idDeliveryMan = 
   
 
     $pdf->Cell(18, 8, $row['id'], 0, 0, 'C', $ban);
-    $pdf->Cell(55, 8, $salesRow['username'], 0, 0, 'C', $ban);
-    $pdf->Cell(45, 8, $salesRow['address'], 0, 0, 'C', $ban);
-    $pdf->Cell(35, 8, $salesRow['date'], 0, 0, 'C', $ban);
-    $pdf->Cell(35, 8, '$ ' . $salesRow['total'], 0, 0, 'C', $ban);
+    $pdf->Cell(60, 8, $salesRow['username'], 0, 0, 'C', $ban);
+    $pdf->Cell(55, 8, $salesRow['address'], 0, 0, 'C', $ban);
+    $pdf->Cell(25, 8, $salesRow['date'], 0, 0, 'C', $ban);
+    $pdf->Cell(25, 8, '$ ' . $salesRow['total'], 0, 0, 'C', $ban);
     $pdf->Ln(14);
     $ban = !$ban;
 }

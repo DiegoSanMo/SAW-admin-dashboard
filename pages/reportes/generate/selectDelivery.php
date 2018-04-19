@@ -145,10 +145,10 @@
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label for="exampleFormControlSelect1">Repartidor</label>
-                                                        <select class="form-control" id="exampleFormControlSelect1">
+                                                        <select class="form-control" name='opc' id='opc' id="exampleFormControlSelect1">
                                                             <?php 
                                                                 foreach ($conexion->query('SELECT * from `delivery_man`') as $row){
-                                                                    echo "<option value= '".$row['id']."' name='opc' id='opc'>";
+                                                                    echo "<option value= '".$row['id']."'>";
                                                                     echo $row['name'];
                                                                     echo "</option>";
                                                             } ?>
