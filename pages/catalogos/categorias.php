@@ -195,10 +195,10 @@
                                 </thead>
                                 <tbody>
                                 <?php
-                                  foreach ($conexion->query('SELECT * from `brands`') as $row){?>	
+                                  foreach ($conexion->query('SELECT * from `categorias`') as $row){?>	
                                     <tr class="odd gradeX">
                                         <td><?php echo $row['id']; ?></td>
-                                        <td><?php echo $row['name']; ?></td>
+                                        <td><?php echo $row['nombre']; ?></td>
                                     </tr>
                                 <?php } ?>
                                 </tbody>
