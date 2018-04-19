@@ -1,20 +1,5 @@
-<?php  
-    include('../../conexion.php');
-    if (@$_POST['nombre']) {
-      
-      $nombre = $_POST['nombre'];
-      
-      $consultaSQL="INSERT INTO `brands`(`name`) VALUES('$nombre');";
-      $resultados=mysqli_query($conexion,$consultaSQL);
-      if ($resultados)
-        echo "<script>alert('Insertado exitosamente');</script>";    
-      else
-        echo "<script>alert('Error');</script>";
-    }
-    $valores = "SELECT COUNT(*) from brands";
-    $lector = mysqli_query($conexion, $valores);
-    $row = mysqli_fetch_array($lector);
-    $id = $row[0]+1;
+<?php
+  include('../../../conexion.php');    
 ?>
 
 
@@ -34,22 +19,22 @@
     <title>SB Admin 2 - Bootstrap Admin Theme</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
-    <link href="../../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <link href="../../../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
 
     <!-- DataTables CSS -->
-    <link href="../../vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="../../../vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
 
     <!-- DataTables Responsive CSS -->
-    <link href="../../vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+    <link href="../../../vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="../../dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="../../../dist/css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="../../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../../../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -87,7 +72,6 @@
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="../login.php"><i class="fa fa-sign-out fa-fw"></i> Salir</a>
                         </li>
-                        
                     </ul>
                     <!-- /.dropdown-user -->
                 </li>
@@ -123,7 +107,7 @@
                                         <a href="../reportes/generate/productsReport.php">Productos</a>
                                     </li>
                                     <li>
-                                        <a href="../reportes/generate/selectDelivery.php">Entregas por repartidor</a>
+                                        <a href="../reportes/generate/delivery.php">Entregas por repartidor</a>
                                     </li>
                                 </ul>
                             </li>  
@@ -137,7 +121,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h1 class="page-header">Registro de marcas</h1>
+                    <h1 class="page-header">Reportes de entrega por repartidor</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -146,59 +130,41 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Nuevo registro
+                            Nuevo reporte
                         </div>
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-1"></div>
-                                <div class="col-md-9">
-                                    <form action="brands.php" method="post">
-                                        <div class="form-group">
-                                            <label for="id">ID</label><br>
-                                            <?php
-                                            echo "<input type='text' placeholder='$id' class='form-control' readonly=''>";
-                                            ?>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="nombre">Nombre</label>
-                                            <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Nombre de la marca...">
-                                        </div>
-                                        <button type="submit" class="btn btn-warning">Registrar</button>
+                                    <div class="col-md-9">
+                                        <form action="delivery.php" method="post">
+                                            <h4><p>En este apartado se generara el reporte correspondiente a las entregas realizadas por el repartidor seleccionado</p></h4>
+                                            <br>
+                                            <br>
+                                            
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlSelect1">Repartidor</label>
+                                                        <select class="form-control" id="exampleFormControlSelect1">
+                                                            <?php 
+                                                                foreach ($conexion->query('SELECT * from `delivery_man`') as $row){
+                                                                    echo "<option value= '".$row['id']."' name='opc' id='opc'>";
+                                                                    echo $row['name'];
+                                                                    echo "</option>";
+                                                            } ?>
+                                                        </select>
+                                                    </div>
+                                                </div>                  
+                                            </div>
                                         
-                                    </form>
+                                            <div class="form-group">
+                                                <div class="col-md-6"></div>
+                                                <button type="submit" class="btn btn-warning">Generar pdf</button>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
-                            
-                        </div>
-
-                        <br>
-                        <br>
-                        <br>
-
-                        <div class="panel-heading">
-                            Marcas registradas
-                        </div>
-                        <div class="container">
-                        <!-- /.panel-heading -->
-                        <div class="panel-body col-md-11">
-                            <table width="95%" class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Nombre</th>
-                                        
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                <?php
-                                  foreach ($conexion->query('SELECT * from `brands`') as $row){?>	
-                                    <tr class="odd gradeX">
-                                        <td><?php echo $row['id']; ?></td>
-                                        <td><?php echo $row['name']; ?></td>
-                                    </tr>
-                                <?php } ?>
-                                </tbody>
-                            </table>
                         </div>
                         <!-- /.panel-body -->
                     </div>
@@ -213,21 +179,21 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="../../vendor/jquery/jquery.min.js"></script>
+    <script src="../../../vendor/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="../../vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../vendor/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="../../vendor/metisMenu/metisMenu.min.js"></script>
+    <script src="../../../vendor/metisMenu/metisMenu.min.js"></script>
 
     <!-- DataTables JavaScript -->
-    <script src="../../vendor/datatables/js/jquery.dataTables.min.js"></script>
-    <script src="../../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
-    <script src="../../vendor/datatables-responsive/dataTables.responsive.js"></script>
+    <script src="../../../vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="../../../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+    <script src="../../../vendor/datatables-responsive/dataTables.responsive.js"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="../../dist/js/sb-admin-2.js"></script>
+    <script src="../../../dist/js/sb-admin-2.js"></script>
 
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
@@ -241,3 +207,4 @@
 </body>
 
 </html>
+

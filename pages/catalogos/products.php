@@ -127,6 +127,9 @@
                                     <li>
                                         <a href="../reportes/generate/productsReport.php">Productos</a>
                                     </li>
+                                    <li>
+                                        <a href="../reportes/generate/selectDelivery.php">Entregas por repartidor</a>
+                                    </li>
                                 </ul>
                             </li>  
                         </ul>
@@ -139,7 +142,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h1 class="page-header">Registro de categorias</h1>
+                    <h1 class="page-header">Registro de productos</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>

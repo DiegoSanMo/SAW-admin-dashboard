@@ -124,6 +124,9 @@
                                     <li>
                                         <a href="../reportes/generate/productsReport.php">Productos</a>
                                     </li>
+                                    <li>
+                                        <a href="../reportes/generate/selectDelivery.php">Entregas por repartidor</a>
+                                     </li>
                                 </ul>
                             </li>  
                         </ul>
