@@ -58,7 +58,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php"><img src="../../assets/images/letras.png" alt="" style="width: 150px"></a>
+                <a class="navbar-brand" href="../../index.php"><img src="../../../assets/images/letras.png" alt="" style="width: 150px"></a>
             </div>
             <!-- /.navbar-header -->
 
