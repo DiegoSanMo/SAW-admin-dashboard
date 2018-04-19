@@ -114,6 +114,14 @@
                             <li>
                                 <a href="../catalogos/products.php"><i class="fa fa-table fa-fw"></i> Productos</a>
                             </li>       
+                            <li>
+                                <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Reportes<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="../reportes/generate/productsReport.php">Productos</a>
+                                    </li>
+                                </ul>
+                            </li>
                         </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

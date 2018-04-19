@@ -109,6 +109,14 @@
                         <li>
                             <a href="catalogos/products.php"><i class="fa fa-table fa-fw"></i> Productos</a>
                         </li>       
+                        <li>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Reportes<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="reportes/generate/productsReport.php">Productos</a>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -116,109 +124,7 @@
         </nav>
 
         <div id="page-wrapper">
-            <!-- /.row -->
-            <br>
-            <div class="row">
-                <div class="col-md-1"></div>
-                <div class="col-lg-5 col-md-5">
-                    <div class="panel panel-yellow">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-shopping-cart fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge"><?php echo $shoppingCartRow[0]; ?></div>
-                                    <div>Pedidos pendientes!</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="tables.php">
-                            <div class="panel-footer">
-                                <span class="pull-left">Ver pedidos</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-5 col-md-5">
-                    <div class="panel panel-red">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-support fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                <div class="huge"><?php echo $saleRow[0]; ?></div>
-                                    <div>Pedidos entregados!</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="sales-history.php">
-                            <div class="panel-footer">
-                                <span class="pull-left">Ver pedidos</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-1"></div>
-            </div>
-            <!-- /.row -->
-            <div class="container">                
-                <div class="container">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-bell fa-fw"></i> Pedidos urgentes por entregar!
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                <thead>
-                                    <tr>
-                                        <th>Número de venta</th>
-                                        <th>Fecha</th>
-                                        <th>Total</th>
-                                        <th>Dirección</th>
-                                        <th>Ver venta</th>
-                                        <th>Generar entrega de pedido</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                <?php
-                                  foreach ($conexion->query('SELECT * from sales WHERE `status` = 0  ORDER BY id ASC LIMIT 0,7;') as $row){    
-                                    $valores = "SELECT * from shopping_cart WHERE id = ".$row['idShoppingCart'].";";
-                                    $lector = mysqli_query($conexion, $valores);
-                                    $shoppingCartRow = mysqli_fetch_array($lector);
-
-                                    $valores = "SELECT * from clients WHERE id = ".$shoppingCartRow['idClient'].";";
-                                    $lectore = mysqli_query($conexion, $valores);
-                                    $clientRow = mysqli_fetch_array($lectore);
-                                ?>	
-
-                                    <tr class="odd gradeX">
-                                        <td><?php echo $row['id']; ?></td>
-                                        <td><?php echo $row['date']; ?></td>
-                                        <td><?php echo $row['total']; ?></td>
-                                        <td class="center"><?php echo $clientRow['address']; ?></td>
-                                        <td class="text-center"><a href='detail.php?id=<?php echo $row['id'];?>' class="btn btn-info">Ver venta</a></td>
-                                        <td class='text-center'><a href='sale.php?id=<?php echo $row['id'];?>' class='btn btn-success'>Generar entrega</a></td>
-                                    </tr>
-                                <?php } ?>
-                                </tbody>
-                            </table>
-                            <!-- /.list-group -->
-                            <!-- <a href="tables.php" class="btn btn-default btn-block">Ver todos los pedidos</a> -->
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
-                </div>
-                <!-- /.col-lg-4 -->
-            </div>
-            <!-- /.row -->
+            
         </div>
         <!-- /#page-wrapper -->
 
