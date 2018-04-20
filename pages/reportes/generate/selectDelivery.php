@@ -83,31 +83,31 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">                        
                             <li>
-                                <a href="../index.php"><i class="fa fa-home fa-fw"></i> Inicio</a>
+                                <a href="../../index.php"><i class="fa fa-home fa-fw"></i> Inicio</a>
                             </li>   
                             <li>
-                                <a href="../catalogos/categorias.php"><i class="fa fa-align-left fa-fw"></i> Categorias</a>
+                                <a href="../../catalogos/categorias.php"><i class="fa fa-align-left fa-fw"></i> Categorias</a>
                             </li> 
                             <li>
-                                <a href="../catalogos/brands.php"><i class="fa fa-folder fa-fw"></i> Marcas</a>
+                                <a href="../../catalogos/brands.php"><i class="fa fa-folder fa-fw"></i> Marcas</a>
                             </li> 
                             <li>
-                                <a href="../catalogos/administrators.php"><i class="fa fa-user-plus fa-fw"></i> Administradores</a>
+                                <a href="../../catalogos/administrators.php"><i class="fa fa-user-plus fa-fw"></i> Administradores</a>
                             </li>                      
                             <li>
-                                <a href="../catalogos/delivery_man.php"><i class="fa fa-truck fa-fw"></i> Repartidores</a>
+                                <a href="../../catalogos/delivery_man.php"><i class="fa fa-truck fa-fw"></i> Repartidores</a>
                             </li> 
                             <li>
-                                <a href="../catalogos/products.php"><i class="fa fa-table fa-fw"></i> Productos</a>
+                                <a href="../../catalogos/products.php"><i class="fa fa-table fa-fw"></i> Productos</a>
                             </li>     
                             <li>
                                 <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Reportes<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="../reportes/generate/productsReport.php">Productos</a>
+                                        <a href="productsReport.php">Productos</a>
                                     </li>
                                     <li>
-                                        <a href="../reportes/generate/delivery.php">Entregas por repartidor</a>
+                                        <a href="delivery.php">Entregas por repartidor</a>
                                     </li>
                                 </ul>
                             </li>  
