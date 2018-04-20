@@ -121,6 +121,9 @@
                                 <li>
                                     <a href="reportes/generate/clients.php">Clientes</a>
                                 </li>
+                                <li>
+                                    <a href="reportes/generate/salesReport.php">Pedidos por entregar</a>
+                                </li>
                             </ul>
                         </li>
                     </ul>
