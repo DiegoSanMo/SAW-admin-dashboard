@@ -109,6 +109,9 @@
                                     <li>
                                         <a href="delivery.php">Entregas por repartidor</a>
                                     </li>
+                                    <li>
+                                        <a href="../reportes/generate/clients.php">Clientes</a>
+                                    </li>
                                 </ul>
                             </li>  
                         </ul>
