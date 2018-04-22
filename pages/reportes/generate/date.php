@@ -130,7 +130,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h1 class="page-header">Reportes de entrega por repartidor</h1>
+                    <h1 class="page-header">Reportes de entrega por fecha</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -145,31 +145,29 @@
                             <div class="row">
                                 <div class="col-md-1"></div>
                                     <div class="col-md-9">
-                                        <form action="delivery.php" method="post">
-                                            <h4><p>En este apartado se generara el reporte correspondiente a las entregas realizadas por el repartidor seleccionado</p></h4>
+                                        <form action="deliveriesByDate.php" method="post">
+                                            <h4><p>En este apartado se generara el reporte correspondiente a las entregas realizadas en las fechas seleccionadas </p></h4>
                                             <br>
                                             <br>
                                             
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        <label for="exampleFormControlSelect1">Repartidor</label>
-                                                        <select class="form-control" name='opc' id='opc' id="exampleFormControlSelect1">
-                                                            <?php 
-                                                                foreach ($conexion->query('SELECT * from `delivery_man`') as $row){
-                                                                    echo "<option value= '".$row['id']."'>";
-                                                                    echo $row['name'];
-                                                                    echo "</option>";
-                                                            } ?>
-                                                        </select>
+                                                    <div class="col-md-1"></div>
+                                                    <div class="col-md-5">
+                                                        <label for="exampleFormControlSelect1">Desde</label>
+                                                        <input type="date" class="form-control" value="" name="date1">
                                                     </div>
-                                                </div>                  
+                                                    <div class="col-md-5">
+                                                        <label for="exampleFormControlSelect1">Hasta</label>
+                                                        <input type="date" class="form-control" value="" name="date2">
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                    <label for="exampleFormControlSelect1">Accion</label>
+                                                        <button type="submit" class="btn btn-warning">Generar pdf</button>
+                                                    </div>
+                                                </div>  
                                             </div>
-                                        
-                                            <div class="form-group">
-                                                <div class="col-md-6"></div>
-                                                <button type="submit" class="btn btn-warning">Generar pdf</button>
-                                            </div>
+                                        <br>
                                         </form>
                                     </div>
                                 </div>
