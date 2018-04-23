@@ -1,5 +1,7 @@
 <?php
-  include('../../../conexion.php');    
+  include('../../../conexion.php'); 
+  date_default_timezone_set('America/Monterry');
+  $date = date('Y-m-d', time());
 ?>
 
 
@@ -155,7 +157,7 @@
                                                     <div class="col-md-1"></div>
                                                     <div class="col-md-5">
                                                         <label for="exampleFormControlSelect1">Desde</label>
-                                                        <input type="date" class="form-control" value="" name="date1">
+                                                        <input class="form-control" type="date" value="" name="date1">
                                                     </div>
                                                     <div class="col-md-5">
                                                         <label for="exampleFormControlSelect1">Hasta</label>
