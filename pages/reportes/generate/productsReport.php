@@ -51,7 +51,7 @@ $pdf->SetTextColor(0, 0, 0);
 
 
 $ban = false;
-foreach ($conexion->query('SELECT * from `products`') as $row){
+foreach ($conexion->query('SELECT * from `products` ORDER BY idCategory') as $row){
   $consulta = mysqli_query($conexion, "SELECT `name` FROM brands where id = ".$row['idBrand']."");
   $brandRow = mysqli_fetch_array($consulta);
   $consulta = mysqli_query($conexion, "SELECT `nombre` FROM categorias where id = ".$row['idCategory']."");

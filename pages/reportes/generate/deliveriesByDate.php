@@ -3,6 +3,9 @@
     include('../../../conexion.php');  
     
     if (@$_POST['date1'] ) {
+      echo "<script> 
+          alert(".$_POST['date1'].");
+      </script>";
         $time = strtotime($_POST['date1']);
         $time2 = strtotime($_POST['date2']);
         if ($time) {

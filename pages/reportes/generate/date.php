@@ -1,6 +1,6 @@
 <?php
   include('../../../conexion.php'); 
-  date_default_timezone_set('America/Monterry');
+  date_default_timezone_set('America/Monterrey');
   $date = date('Y-m-d', time());
 ?>
 
@@ -156,15 +156,15 @@
                                                 <div class="col-md-12">
                                                     <div class="col-md-1"></div>
                                                     <div class="col-md-5">
-                                                        <label for="exampleFormControlSelect1">Desde</label>
+                                                        <label for="">Desde</label>
                                                         <input class="form-control" type="date" value="" name="date1">
                                                     </div>
                                                     <div class="col-md-5">
-                                                        <label for="exampleFormControlSelect1">Hasta</label>
+                                                        <label for="">Hasta</label>
                                                         <input type="date" class="form-control" value="" name="date2">
                                                     </div>
                                                     <div class="col-md-1">
-                                                    <label for="exampleFormControlSelect1">Accion</label>
+                                                    <label for="">Accion</label>
                                                         <button type="submit" class="btn btn-warning">Generar pdf</button>
                                                     </div>
                                                 </div>  
