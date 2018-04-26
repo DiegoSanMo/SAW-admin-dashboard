@@ -1,13 +1,29 @@
 <?php
-    require('../fpdf.php');
     include('../../../conexion.php');  
-    
+    require('../fpdf.php');
+    date_default_timezone_set('America/Monterrey');
     if (@$_POST['date1'] ) {
-        $time = strtotime($_POST['date1']);
-        $time2 = strtotime($_POST['date2']);
+        $date = new DateTime($_POST['date1']);
+        $date2 = new DateTime($_POST['date2']);
+        $new_date = $date->format('Y-m-d');
+        $new_date2 = $date2->format('Y-m-d');
+
+        // echo $new_date;
+        // $FI = $_POST['date1'];
+        // $FF = $_POST['date2'];
+
+        // //NUEVO formato de fechas
+        // $date = date_create($FI);
+        // $date2 = date_create($FF);
+
+        // $nueva = date_format($date, 'Y-m-d');
+        // $nueva2 = date_format($date2, 'Y-m-d');
+
+         $time = strtotime($_POST['date1']);
+         $time2 = strtotime($_POST['date2']);
         if ($time) {
-            $new_date = date('Y-m-d', $time);
-            $new_date2 = date('Y-m-d', $time2);
+            $new_date = date('y-m-d', $time);
+            $new_date2 = date('y-m-d', $time2);
           
         } else {
             echo 'Invalid Date: ' . $_POST['date1'];
@@ -75,6 +91,7 @@ $pdf->SetTextColor(0, 0, 0);
 $ban = false;
 $cont = 0;
 $total = 0;
+
 foreach ($conexion->query(' SELECT 
                                 delivery_order.id, 
                                 clients.username,
@@ -83,12 +100,11 @@ foreach ($conexion->query(' SELECT
                                 delivery_order.date, 
                                 sales.total
                             FROM 
-                                `delivery_order` 
+                                delivery_order 
                             INNER JOIN delivery_man ON delivery_order.id = delivery_man.id 
                             INNER JOIN sales ON delivery_order.idSale = sales.id
                             INNER JOIN shopping_cart ON sales.idShoppingCart = shopping_cart.id
                             INNER JOIN clients ON shopping_cart.idClient = clients.id 
-
                             WHERE delivery_order.date BETWEEN '.$new_date.' AND '.$new_date2.';') as $row){
                                 
     $pdf->Cell(18, 8, $row['id'], 0, 0, 'C', $ban);
@@ -126,7 +142,7 @@ foreach ($conexion->query(' SELECT
         $pdf->SetFont('Arial', 'B', 14);
         $pdf->SetTextColor(100, 100, 100);
         $pdf->Cell(90, 8, '', 0);
-        $pdf->Cell(120,10,'Pedidos realizados del '.$date1. ' hasta '.$date2.'');
+        $pdf->Cell(120,10,'Pedidos realizados del '.$nueva. ' hasta '.$nueva2.'');
         $pdf->Ln(15); //salto de línea
         
         //COLUMNAS

@@ -132,8 +132,14 @@
                                         <a href="../reportes/generate/salesReport.php">Pedidos por entregar</a>
                                     </li>
                                     <li>
-                                    <a href="r../eportes/generate/date.php">Pedidos por fecha</a>
-                                </li>
+                                        <a href="../reportes/generate/categories.php">Categorias</a>
+                                    </li>
+                                    <li>
+                                        <a href="../reportes/generate/brands.php">Marcas</a>
+                                    </li>
+                                    <li>
+                                        <a href="../reportes/generate/date.php">Pedidos por fecha</a>
+                                    </li>
                                 </ul>
                             </li>  
                         </ul>
