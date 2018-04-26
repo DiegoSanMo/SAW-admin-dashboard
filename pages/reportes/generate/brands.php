@@ -4,6 +4,7 @@
     
     
 $pdf = new FPDF();
+$pdf->AliasNbPages();
 $contPage = 1;
 //CABECERA
 $pdf->AddPage();
@@ -20,7 +21,7 @@ $pdf->SetFont('Arial','B',11);
 $pdf->Cell(40,10,'Fecha: '.date('d-m-Y').'', 100);
 $pdf->Ln(8);
 $pdf->Cell(160, 8, '', 0);
-$pdf->Cell(30,10,'No. pag ' .$contPage, 0);
+$pdf->Cell(0,10,'No. Pag:  '.$pdf->PageNo().'/{nb}',0,0,'C');
 
 $pdf->Ln(20); //salto de línea
 
@@ -55,8 +56,8 @@ $cont = 0;
 
 foreach ($conexion->query('SELECT * from `brands`') as $row){
     
-    $pdf->Cell(18, 8, $row['id'], 0, 0, 'C', $ban);
-    $pdf->Cell(170, 8, $row['name'], 0, 0, 'C', $ban);
+    $pdf->Cell(18, 8, $row['id'], 0, 0, 'L', $ban);
+    $pdf->Cell(170, 8, $row['name'], 0, 0, 'L', $ban);
     $pdf->Ln(14);
     $ban = !$ban;
     $cont+=1;
@@ -78,7 +79,7 @@ foreach ($conexion->query('SELECT * from `brands`') as $row){
         $pdf->Cell(40,10,'Fecha: '.date('d-m-Y').'', 100);
         $pdf->Ln(8);
         $pdf->Cell(160, 8, '', 0);
-        $pdf->Cell(30,10,'No. pag ' .$contPage, 0);
+        $pdf->Cell(0,10,'No. Pag:  '.$pdf->PageNo().'/{nb}',0,0,'C');
 
         $pdf->Ln(20); //salto de línea
 
