@@ -156,7 +156,7 @@ foreach ($conexion->query(' SELECT
         $pdf->Cell(25, 8, 'Fecha', 1, 0, 'C', true);
         $pdf->Cell(25, 8, 'Total', 1, 0, 'C', true);
 
-        //FILAS
+        //FILAS c
         $pdf->SetFont('Arial', '', 12);
         $pdf->SetFillColor(240,240,240);
         $pdf->SetTextColor(0, 0, 0);
