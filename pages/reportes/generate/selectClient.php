@@ -1,7 +1,5 @@
 <?php
-  include('../../../conexion.php'); 
-  date_default_timezone_set('America/Monterry');
-  $date = date('Y-m-d', time());
+  include('../../../conexion.php');    
 ?>
 
 
@@ -118,10 +116,10 @@
                                         <a href="salesReport.php">Pedidos por entregar</a>
                                     </li>
                                     <li>
-                                        <a href="../generate/categories.php">Categorias</a>
+                                        <a href="reportes/generate/categories.php">Categorias</a>
                                     </li>
                                     <li>
-                                      <a href="../generate/brands.php">Marcas</a>
+                                        <a href="reportes/generate/brands.php">Marcas</a>
                                     </li>
                                     <li>
                                         <a href="selectClient.php">Historial por cliente</a>
@@ -141,7 +139,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h1 class="page-header">Reportes de entrega por fecha</h1>
+                    <h1 class="page-header">Reportes de compras por cliente</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -156,29 +154,31 @@
                             <div class="row">
                                 <div class="col-md-1"></div>
                                     <div class="col-md-9">
-                                        <form action="deliveriesByDate.php" method="post">
-                                            <h4><p>En este apartado se generara el reporte correspondiente a las entregas realizadas en las fechas seleccionadas </p></h4>
+                                        <form action="searchClient.php" method="post">
+                                            <h4><p>En este apartado se generara el reporte correspondiente a las compras realizadas por el cliente seleccionado</p></h4>
                                             <br>
                                             <br>
                                             
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <div class="col-md-1"></div>
-                                                    <div class="col-md-5">
-                                                        <label for="exampleFormControlSelect1">Desde</label>
-                                                        <input class="form-control" type="date" value="" name="date1">
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlSelect1">Cliente</label>
+                                                        <select class="form-control" name='opc' id='opc' id="exampleFormControlSelect1">
+                                                            <?php 
+                                                                foreach ($conexion->query('SELECT username from `clients`') as $row){
+                                                                    echo "<option value= '".$row['username']."'>";
+                                                                    echo $row['username'];
+                                                                    echo "</option>";
+                                                            } ?>
+                                                        </select>
                                                     </div>
-                                                    <div class="col-md-5">
-                                                        <label for="exampleFormControlSelect1">Hasta</label>
-                                                        <input type="date" class="form-control" value="" name="date2">
-                                                    </div>
-                                                    <div class="col-md-1">
-                                                    <label for="exampleFormControlSelect1">Accion</label>
-                                                        <button type="submit" class="btn btn-warning">Generar pdf</button>
-                                                    </div>
-                                                </div>  
+                                                </div>                  
                                             </div>
-                                        <br>
+                                        
+                                            <div class="form-group">
+                                                <div class="col-md-6"></div>
+                                                <button type="submit" class="btn btn-warning">Generar pdf</button>
+                                            </div>
                                         </form>
                                     </div>
                                 </div>

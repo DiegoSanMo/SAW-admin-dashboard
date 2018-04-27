@@ -105,7 +105,7 @@ foreach ($conexion->query(' SELECT
                             INNER JOIN sales ON delivery_order.idSale = sales.id
                             INNER JOIN shopping_cart ON sales.idShoppingCart = shopping_cart.id
                             INNER JOIN clients ON shopping_cart.idClient = clients.id 
-                            WHERE delivery_order.date BETWEEN '.$new_date.' AND '.$new_date2.';') as $row){
+                            WHERE delivery_order.date BETWEEN "'.$new_date.'" AND "'.$new_date2.'";') as $row){
                                 
     $pdf->Cell(18, 8, $row['id'], 0, 0, 'C', $ban);
     $pdf->Cell(75, 8, $row['username'], 0, 0, 'C', $ban);
@@ -163,8 +163,8 @@ foreach ($conexion->query(' SELECT
     }    
 }
 $pdf->SetFont('Arial', 'B', 14);
-$pdf->Cell(252, 8, 'TOTAL:   $', 0, 0, 'R', $ban);
-$pdf->Cell(25, 8, $total, 0, 0, 'R', $ban);
+$pdf->Cell(235, 8, 'TOTAL:   $', 0, 0, 'R', $ban);
+$pdf->Cell(38, 8, $total, 0, 0, 'R', $ban);
 
 //REPORTES PAGOS ADMI
 

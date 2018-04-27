@@ -131,7 +131,10 @@
                                     <a href="reportes/generate/brands.php">Marcas</a>
                                 </li>
                                 <li>
-                                    <a href="reportes/generate/date.php">Pedidos por fecha</a>
+                                    <a href="reportes/generate/selectClient.php">Historial por cliente</a>
+                                </li>
+                                <li>
+                                    <a href="reportes/generate/date.php">Pedidos realizados por periodo</a>
                                 </li>
                             </ul>
                         </li>
