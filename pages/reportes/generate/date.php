@@ -118,10 +118,13 @@
                                         <a href="salesReport.php">Pedidos por entregar</a>
                                     </li>
                                     <li>
-                                        <a href="../generate/categories.php">Categorias</a>
+                                        <a href="totalSalesClients.php">Total de ventas por cliente</a>
                                     </li>
                                     <li>
-                                      <a href="../generate/brands.php">Marcas</a>
+                                        <a href="generate/categories.php">Categorias</a>
+                                    </li>
+                                    <li>
+                                      <a href="generate/brands.php">Marcas</a>
                                     </li>
                                     <li>
                                         <a href="selectClient.php">Historial por cliente</a>

@@ -134,6 +134,9 @@
                                         <a href="../reportes/generate/salesReport.php">Pedidos por entregar</a>
                                     </li>
                                     <li>
+                                        <a href="../reportes/generate/totalSalesClients.php">Total de ventas por cliente</a>
+                                    </li>
+                                    <li>
                                         <a href="../reportes/generate/categories.php">Categorias</a>
                                     </li>
                                     <li>

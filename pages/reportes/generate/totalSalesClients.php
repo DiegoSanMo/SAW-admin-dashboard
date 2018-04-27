@@ -29,7 +29,7 @@ $pdf->Ln(15); //salto de línea
 $pdf->SetFont('Arial', 'B', 14);
 $pdf->SetTextColor(100, 100, 100);
 $pdf->Cell(60, 8, '', 0);
-$pdf->Cell(120,10,'Reporte de clientes registrados', 0);
+$pdf->Cell(120,10,'Reporte de consumo por cliente', 0);
 $pdf->Ln(15); //salto de línea
 
 //COLUMNAS
@@ -51,16 +51,21 @@ $pdf->SetTextColor(0, 0, 0);
 
 $ban = false;
 $cont = 0;
+$total = 0;
 
 foreach ($conexion->query('SELECT * from `clients`') as $row){
-    
-    $pdf->Cell(25, 8, $row['id'], 0, 0, 'L', $ban);
-    $pdf->Cell(100, 8, $row['username'], 0, 0, 'L', $ban);
-    $pdf->Cell(60, 8, $row['address'], 0, 0, 'L', $ban);
-    $pdf->Ln(10);
-    $ban = !$ban;
-    $cont+=1;
-    if($cont >= 17){
+    $valores = "SELECT SUM(total) from sales INNER JOIN shopping_cart ON sales.idShoppingCart = shopping_cart.id WHERE shopping_cart.idClient = ".$row['id'].";";
+    $lector = mysqli_query($conexion, $valores);
+    $rowSale = mysqli_fetch_array($lector);
+    if($rowSale['SUM(total)'] > 0){
+      $total = $total + $rowSale['SUM(total)'];
+      $pdf->Cell(25, 8, $row['id'], 0, 0, 'L', $ban);
+      $pdf->Cell(100, 8, $row['username'], 0, 0, 'L', $ban);
+      $pdf->Cell(60, 8, '$ '.$rowSale['SUM(total)'], 0, 0, 'R', $ban);
+      $pdf->Ln(10);
+      $ban = !$ban;
+      $cont+=1;
+      if($cont >= 17){
         $cont=0;
         $contPage++;
         //CABECERA
@@ -107,8 +112,13 @@ foreach ($conexion->query('SELECT * from `clients`') as $row){
         $pdf->SetFont('Arial', '', 12);
         $pdf->SetFillColor(240,240,240);
         $pdf->SetTextColor(0, 0, 0);
-    }
+      }
+    }       
 }
+
+$pdf->SetFont('Arial', 'B', 14);
+$pdf->Cell(160, 8, 'TOTAL:   $', 0, 0, 'R', $ban);
+$pdf->Cell(25, 8, $total, 0, 0, 'R', $ban);
 
 //REPORTES PAGOS ADMI
 

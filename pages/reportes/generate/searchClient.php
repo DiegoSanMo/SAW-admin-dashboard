@@ -1,12 +1,14 @@
 <?php
 
+include('../../../conexion.php');
+
 if (@$_POST['opc']) {
     $user = $_POST['opc'];
-    $consultaSQL='SELECT * FROM clients WHERE username = ".$user.";';
+    $consultaSQL="SELECT * FROM clients WHERE username = '".$user."';";
     $resultados=mysqli_query($conexion,$consultaSQL);
     $clientRow = mysqli_fetch_array($resultados);
     
-    echo $clientRow['id'];
+    //echo $clientRow['id'];
     
 }
 else{
@@ -14,9 +16,8 @@ else{
         alert('No estoy entrando');
     </script>";
 }
-require('../fpdf.php');
-include('../../../conexion.php');
 
+require('../fpdf.php');
 $pdf = new FPDF();
 $pdf->AliasNbPages();
 //CABECERA
