@@ -116,10 +116,10 @@
                                         <a href="salesReport.php">Pedidos por entregar</a>
                                     </li>
                                     <li>
-                                        <a href="reportes/generate/categories.php">Categorias</a>
+                                        <a href="categories.php">Categorias</a>
                                     </li>
                                     <li>
-                                        <a href="reportes/generate/brands.php">Marcas</a>
+                                        <a href="brands.php">Marcas</a>
                                     </li>
                                     <li>
                                         <a href="selectClient.php">Historial por cliente</a>
