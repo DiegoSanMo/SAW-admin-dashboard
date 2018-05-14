@@ -132,6 +132,8 @@ foreach ($conexion->query('SELECT * from `delivery_order` WHERE idDeliveryMan = 
     }    
     
 }
+// setlocale(LC_MONETARY,'es_MX');
+// $totalString = money_format('%(#10n', $total);
 $pdf->SetFont('Arial', 'B', 14);
 $pdf->Cell(255, 8, 'TOTAL:   $', 0, 0, 'R', $ban);
 $pdf->Cell(25, 8, $total, 0, 0, 'R', $ban);

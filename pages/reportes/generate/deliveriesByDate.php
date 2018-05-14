@@ -19,16 +19,16 @@
         // $nueva = date_format($date, 'Y-m-d');
         // $nueva2 = date_format($date2, 'Y-m-d');
 
-         $time = strtotime($_POST['date1']);
-         $time2 = strtotime($_POST['date2']);
-        if ($time) {
-            $new_date = date('y-m-d', $time);
-            $new_date2 = date('y-m-d', $time2);
+        //  $time = strtotime($_POST['date1']);
+        //  $time2 = strtotime($_POST['date2']);
+        // if ($time) {
+        //     $new_date = date('Y-m-d', $time);
+        //     $new_date2 = date('Y-m-d', $time2);
           
-        } else {
-            echo 'Invalid Date: ' . $_POST['date1'];
-        // fix it.
-        }
+        // } else {
+        //     echo 'Invalid Date: ' . $_POST['date1'];
+        
+        // }
         
        
     }
@@ -92,7 +92,7 @@ $ban = false;
 $cont = 0;
 $total = 0;
 
-foreach ($conexion->query(' SELECT 
+foreach ($conexion->query(" SELECT 
                                 delivery_order.id, 
                                 clients.username,
                                 clients.address,
@@ -105,7 +105,7 @@ foreach ($conexion->query(' SELECT
                             INNER JOIN sales ON delivery_order.idSale = sales.id
                             INNER JOIN shopping_cart ON sales.idShoppingCart = shopping_cart.id
                             INNER JOIN clients ON shopping_cart.idClient = clients.id 
-                            WHERE delivery_order.date BETWEEN "'.$new_date.'" AND "'.$new_date2.'";') as $row){
+                            WHERE delivery_order.date BETWEEN '".$new_date."' AND '".$new_date2."';") as $row){
                                 
     $pdf->Cell(18, 8, $row['id'], 0, 0, 'C', $ban);
     $pdf->Cell(75, 8, $row['username'], 0, 0, 'C', $ban);

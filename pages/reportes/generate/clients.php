@@ -55,7 +55,7 @@ $pdf->SetTextColor(0, 0, 0);
 $ban = false;
 $cont = 0;
 
-foreach ($conexion->query('SELECT * from `clients`') as $row){
+foreach ($conexion->query('SELECT * from `clients` ORDER BY username ASC') as $row){
     
     $pdf->Cell(18, 8, $row['id'], 0, 0, 'L', $ban);
     $pdf->Cell(80, 8, $row['username'], 0, 0, 'L', $ban);
